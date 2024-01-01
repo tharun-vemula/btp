@@ -1,0 +1,121 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../static/settings.png" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../static/style.css" />
+  <title>QoE Prediction</title>
+</head>
+
+<body>
+  <div class="container">
+    <header class="text-center text-light my-4">
+      <h1>Quality of Experience (QoE) Prediction</h1>
+    </header>
+
+    <div class="container-fluid">
+      <div class="container mt-3">
+        <p class="text-white mt-3 p-3"> <strong> Quality of Experience (QoE) </strong> is a measure of the overall level
+          of
+          a
+          customer's satisfaction and experience with a product or service and the vendor
+          that's providing that product or service. It is the overall acceptability of an application or service, as
+          perceived subjectively by the end-user.</p>
+      </div>
+    </div>
+
+    <form class="add text-center my-4" method="post" action="/submit">
+      <div class="row">
+        <h3 class="h3 text-start text-white p-3"> QoS Metrics </h3>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> Bandwidth </label>
+          <input class="form-control m-auto" type="text" id="bandwidth" name="bandwidth" />
+        </div>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> Delay </label>
+          <input class="form-control m-auto" type="text" id="delay" name="delay" />
+        </div>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> Jitter </label>
+          <input class="form-control m-auto" type="text" id="jitter" name="jitter" />
+        </div>
+      </div>
+      <div class="row">
+        <h3 class="h3 text-start text-white p-3"> Video Metrics </h3>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> Normalised Bitrate </label>
+          <input class="form-control m-auto" type="text" id="nbitrate" name="nbitrate" />
+        </div>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> Complexity </label>
+          <input class="form-control m-auto" type="text" id="complexity" name="complexity" />
+        </div>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> Complexity Class </label>
+          <input class="form-control m-auto" type="text" id="complexityClass" name="complexityClass" />
+        </div>
+      </div>
+      <div class="row">
+        <h3 class="h3 text-start text-white p-3"> QoA Metrics </h3>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> Resolution </label>
+          <input class="form-control m-auto" type="text" id="resolution" name="resolution" />
+        </div>
+      </div>
+      <div class="row">
+        <h3 class="h3 text-start text-white p-3"> QoD Metrics </h3>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> RAM Clock Speed </label>
+          <input class="form-control m-auto" type="text" id="ramclockSpeed" name="ramclockSpeed" />
+        </div>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> Screen MHz </label>
+          <input class="form-control m-auto" type="text" id="screenMHz" name="screenMHz" />
+        </div>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> Screen Dimension </label>
+          <input class="form-control m-auto" type="text" id="screenDimension" name="screenDimension" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <label class="text-light my-2"> Stepping </label>
+          <input class="form-control m-auto" type="text" id="stepping" name="stepping" />
+        </div>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> Screen Plug Type </label>
+          <input class="form-control m-auto" type="text" id="plugType" name="plugType" />
+        </div>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> CPU MHz </label>
+          <input class="form-control m-auto" type="text" id="Mhzmoy" name="Mhzmoy" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <label class="text-light my-2"> CPU MHz Average </label>
+          <input class="form-control m-auto" type="text" id="Mhzavg" name="Mhzavg" />
+        </div>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> Graphics Processor </label>
+          <input class="form-control m-auto" type="text" id="processor" name="processor" />
+        </div>
+        <div class="col-lg-4">
+          <label class="text-light my-2"> CPU NBR </label>
+          <input class="form-control m-auto" type="text" id="nbr" name="nbr" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-light my-4" id="sb">
+        Predict QoE
+      </button>
+    </form>
+  </div>
+</body>
+
+</html>
