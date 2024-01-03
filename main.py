@@ -8,6 +8,10 @@ import joblib
 filename = join(dirname(__file__), "model", "mos_predictor.pkl")
 model = joblib.load(filename)
 
+fileNameOfModel = join(dirname(__file__), "model", "bitrate-predictor.pkl")
+bit_rate_predictor = joblib.load(fileNameOfModel)
+
+THRESHOLD = 3
 
 app = Flask(__name__)
 
@@ -41,7 +45,20 @@ def find_price():
     features = [np.array(raw_features)]
     prediction = model.predict(features)
     mos = prediction[0]
-    return render_template("result.html", rent=mos)
+
+    if mos < THRESHOLD:
+        return render_template("neg-result.html", mos=mos)
+    else:
+        return render_template("pos-result.html", mos=mos)
+
+
+@app.route("/get-avg", methods=["POST"])
+def find_price():
+    payload = np.array(int(x) for x in request.form.values())
+    payload_reshaped = payload.reshape(1, 19, 1)
+    prediction = model.predict(payload_reshaped)
+    avg = prediction[0][0]
+    return render_template("result.html", avg=avg)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,124 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../static/settings.png" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../static/style.css" />
+    <title>QoE Prediction</title>
+</head>
+
+<body>
+    <div class="container">
+        <header class="text-center text-light my-4">
+            <h1>Quality of Experience (QoE) Prediction</h1>
+        </header>
+        <p class="text-center fs-3 fw-medium text-white">MOS: {{ mos }}</p>
+    </div>
+    <div class="container">
+        <p class="text-start fs-3 fw-medium text-white">Since the predicted MOS is less than the threshold, Average
+            Video Bit Rate for the client is determined</p>
+        <form class="add text-center my-4" method="post" action="/get-avg">
+            <div class="row">
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> Nb Clients </label>
+                    <input class="form-control m-auto" type="text" id="nbclients" name="nbclients" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> Bottle Neck BW </label>
+                    <input class="form-control m-auto" type="text" id="bottleneck" name="bottleneck" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> Bottle Neck Delay </label>
+                    <input class="form-control m-auto" type="text" id="bottleneckdelay" name="bottleneckdelay" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> Bottle Neck Loss </label>
+                    <input class="form-control m-auto" type="text" id="bottleneckloss" name="bottleneckloss" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> Client Resolution </label>
+                    <input class="form-control m-auto" type="text" id="clientresolution" name="clientresolution" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> TCPOutputPacket </label>
+                    <input class="form-control m-auto" type="text" id="tcpoutputpacket" name="tcpoutputpacket" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> TCPOutputDelay </label>
+                    <input class="form-control m-auto" type="text" id="tcpoutputdelay" name="tcpoutputdelay" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> TCPOutputJitter </label>
+                    <input class="form-control m-auto" type="text" id="tcpoutputjitter" name="tcpoutputjitter" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> TCPOutputPloss </label>
+                    <input class="form-control m-auto" type="text" id="tcpoutputloss" name="tcpoutputloss" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> TCPInputPacket </label>
+                    <input class="form-control m-auto" type="text" id="tcpinputpacket" name="tcpinputpacket" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> TCPInputDelay </label>
+                    <input class="form-control m-auto" type="text" id="stepping" name="stepping" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> TCPInputJitter </label>
+                    <input class="form-control m-auto" type="text" id="plugType" name="plugType" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> TCPInputPloss </label>
+                    <input class="form-control m-auto" type="text" id="Mhzmoy" name="Mhzmoy" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> TCPInputRetrans </label>
+                    <input class="form-control m-auto" type="text" id="Mhzavg" name="Mhzavg" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> StdInputRate </label>
+                    <input class="form-control m-auto" type="text" id="processor" name="processor" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> StdInterATimesReq </label>
+                    <input class="form-control m-auto" type="text" id="nbr" name="nbr" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> DASHPolicy_BufferBasedAdaptationLogic </label>
+                    <input class="form-control m-auto" type="text" id="Mhzavg" name="Mhzavg" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> DASHPolicy_RateAndBufferBasedAdaptationLogic </label>
+                    <input class="form-control m-auto" type="text" id="processor" name="processor" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="text-light my-2"> DASHPolicy_RateBasedAdaptationLogic </label>
+                    <input class="form-control m-auto" type="text" id="nbr" name="nbr" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-light my-4" id="sb">
+                Predict QoE
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>
