@@ -5,3 +5,6 @@ https://colab.research.google.com/drive/1M0SJafIFAxoPfl-uBUi267Ec5HrMT03z?usp=sh
 Model 2
 
 https://colab.research.google.com/drive/1ufHh6axV-5Dwa-2reCCDaBIO33xHEBy6?usp=sharing
+
+
+do not try to save in keras model

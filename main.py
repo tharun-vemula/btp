@@ -1,15 +1,13 @@
 from flask import Flask, render_template, request
-
+import tensorflow as tf
 from os.path import join, dirname
 import numpy as np
-from joblib import Parallel, delayed
 import joblib
 
-filename = join(dirname(__file__), "model", "mos_predictor.pkl")
+filename = join(dirname(__file__), "models", "mos", "mos_predictor.pkl")
 model = joblib.load(filename)
 
-fileNameOfModel = join(dirname(__file__), "model", "bitrate-predictor.pkl")
-bit_rate_predictor = joblib.load(fileNameOfModel)
+new_model = tf.keras.models.load_model("models/avg")
 
 THRESHOLD = 3
 
@@ -22,25 +20,25 @@ def hello_word():
 
 
 @app.route("/submit", methods=["POST"])
-def find_price():
+def find_mos():
     ans = request.form.to_dict()
     raw_features = [
-        int(ans["bandwidth"]),
-        int(ans["ramclockSpeed"]),
-        int(ans["screenMHz"]),
-        int(ans["screenDimension"]),
-        int(ans["stepping"]),
-        int(ans["nbitrate"]),
-        int(ans["complexity"]),
-        int(ans["delay"]),
-        int(ans["jitter"]),
-        int(ans["complexityClass"]),
-        int(ans["plugType"]),
-        int(ans["resolution"]),
-        int(ans["Mhzmoy"]),
-        int(ans["Mhzavg"]),
-        int(ans["nbr"]),
-        int(ans["processor"]),
+        float(ans["bandwidth"]),
+        float(ans["ramclockSpeed"]),
+        float(ans["screenMHz"]),
+        float(ans["screenDimension"]),
+        float(ans["stepping"]),
+        float(ans["nbitrate"]),
+        float(ans["complexity"]),
+        float(ans["delay"]),
+        float(ans["jitter"]),
+        float(ans["complexityClass"]),
+        float(ans["plugType"]),
+        float(ans["resolution"]),
+        float(ans["Mhzmoy"]),
+        float(ans["Mhzavg"]),
+        float(ans["nbr"]),
+        float(ans["processor"]),
     ]
     features = [np.array(raw_features)]
     prediction = model.predict(features)
@@ -53,10 +51,11 @@ def find_price():
 
 
 @app.route("/get-avg", methods=["POST"])
-def find_price():
-    payload = np.array(int(x) for x in request.form.values())
+def find_bitrate():
+    payload = np.array([float(x) for x in request.form.values()])
     payload_reshaped = payload.reshape(1, 19, 1)
-    prediction = model.predict(payload_reshaped)
+    prediction = new_model.predict(payload_reshaped)
+    print(prediction)
     avg = prediction[0][0]
     return render_template("result.html", avg=avg)
 
