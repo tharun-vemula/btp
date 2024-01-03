@@ -3,11 +3,14 @@ import tensorflow as tf
 from os.path import join, dirname
 import numpy as np
 import joblib
+from pickle import load
 
 filename = join(dirname(__file__), "models", "mos", "mos_predictor.pkl")
 model = joblib.load(filename)
 
 new_model = tf.keras.models.load_model("models/avg")
+
+scaler = load(open("models/scaler/scaler.pkl", "rb"))
 
 THRESHOLD = 3
 
@@ -53,7 +56,11 @@ def find_mos():
 @app.route("/get-avg", methods=["POST"])
 def find_bitrate():
     payload = np.array([float(x) for x in request.form.values()])
-    payload_reshaped = payload.reshape(1, 19, 1)
+    print(payload)
+    transformed_payload = scaler.transform(payload.reshape(1, 19))
+    print(transformed_payload)
+    payload_reshaped = transformed_payload.reshape(1, 19, 1)
+    print(payload_reshaped)
     prediction = new_model.predict(payload_reshaped)
     print(prediction)
     avg = prediction[0][0]

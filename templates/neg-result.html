@@ -25,8 +25,9 @@
             Video Bit Rate for the client is to be determined</p>
         <form class="add text-center my-4" method="post" action="/get-avg">
             <div class="row">
+                <h3 class="h3 text-start text-white p-3"> Bottle Neck Metrics </h3>
                 <div class="col-lg-4">
-                    <label class="text-light my-2"> Nb Clients </label>
+                    <label class="text-light my-2"> No of Bottle Neck Clients </label>
                     <input class="form-control m-auto" type="text" id="nbclients" name="nbclients" />
                 </div>
                 <div class="col-lg-4">
@@ -47,12 +48,13 @@
                     <label class="text-light my-2"> Client Resolution </label>
                     <input class="form-control m-auto" type="text" id="clientresolution" name="clientresolution" />
                 </div>
+            </div>
+            <div class="row">
+                <h3 class="h3 text-start text-white p-3"> TCP Metrics </h3>
                 <div class="col-lg-4">
                     <label class="text-light my-2"> TCPOutputPacket </label>
                     <input class="form-control m-auto" type="text" id="tcpoutputpacket" name="tcpoutputpacket" />
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-lg-4">
                     <label class="text-light my-2"> TCPOutputDelay </label>
                     <input class="form-control m-auto" type="text" id="tcpoutputdelay" name="tcpoutputdelay" />
@@ -102,15 +104,15 @@
             </div>
             <div class="row">
                 <div class="col-lg-4">
-                    <label class="text-light my-2"> DASHPolicy_BufferBasedAdaptationLogic </label>
+                    <label class="text-light my-2"> BufferBasedAdaptationLogic </label>
                     <input class="form-control m-auto" type="text" id="d2" name="d2" />
                 </div>
                 <div class="col-lg-4">
-                    <label class="text-light my-2"> DASHPolicy_RateAndBufferBasedAdaptationLogic </label>
+                    <label class="text-light my-2"> RateAndBufferBasedAdaptationLogic </label>
                     <input class="form-control m-auto" type="text" id="d4" name="d4" />
                 </div>
                 <div class="col-lg-4">
-                    <label class="text-light my-2"> DASHPolicy_RateBasedAdaptationLogic </label>
+                    <label class="text-light my-2"> RateBasedAdaptationLogic </label>
                     <input class="form-control m-auto" type="text" id="d3" name="d3" />
                 </div>
             </div>
