@@ -56,9 +56,7 @@ def find_mos():
 @app.route("/get-avg", methods=["POST"])
 def find_bitrate():
     payload = np.array([float(x) for x in request.form.values()])
-    print(payload)
     transformed_payload = scaler.transform(payload.reshape(1, 19))
-    print(transformed_payload)
     payload_reshaped = transformed_payload.reshape(1, 19, 1)
     print(payload_reshaped)
     prediction = new_model.predict(payload_reshaped)
